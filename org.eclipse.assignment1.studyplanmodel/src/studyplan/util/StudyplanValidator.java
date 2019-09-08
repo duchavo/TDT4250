@@ -2,8 +2,6 @@
  */
 package studyplan.util;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -144,7 +142,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (! (course.getCourseName().length() < 256)) {
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -172,7 +170,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (!(String.valueOf(course.getCourseId()).length() == 4)) {
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -200,11 +198,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		List<Double> credits = new ArrayList<Double>();
-		credits.add(7.5);
-		credits.add(5.0);
-		credits.add(10.0);
-		if (! (credits.contains(course.getCredit()))) {
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -251,7 +245,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (! (specialization.getSpecName().length() < 256)) {
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -298,7 +292,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (! (fieldOfStudy.getFieldName().length() < 256)) {
+		if (false) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
