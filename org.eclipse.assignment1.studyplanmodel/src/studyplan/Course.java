@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link studyplan.Course#getCourseId <em>Course Id</em>}</li>
  *   <li>{@link studyplan.Course#getCredit <em>Credit</em>}</li>
  *   <li>{@link studyplan.Course#getStatus <em>Status</em>}</li>
+ *   <li>{@link studyplan.Course#getCourseGroup <em>Course Group</em>}</li>
  * </ul>
  *
  * @see studyplan.StudyplanPackage#getCourse()
@@ -51,65 +52,56 @@ public interface Course extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Course Id</em>' attribute.
-	 * @see #setCourseId(int)
 	 * @see studyplan.StudyplanPackage#getCourse_CourseId()
-	 * @model
+	 * @model changeable="false"
 	 * @generated
 	 */
 	int getCourseId();
-
-	/**
-	 * Sets the value of the '{@link studyplan.Course#getCourseId <em>Course Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Course Id</em>' attribute.
-	 * @see #getCourseId()
-	 * @generated
-	 */
-	void setCourseId(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Credit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Credit</em>' attribute.
-	 * @see #setCredit(double)
 	 * @see studyplan.StudyplanPackage#getCourse_Credit()
-	 * @model
+	 * @model changeable="false"
 	 * @generated
 	 */
 	double getCredit();
-
-	/**
-	 * Sets the value of the '{@link studyplan.Course#getCredit <em>Credit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Credit</em>' attribute.
-	 * @see #getCredit()
-	 * @generated
-	 */
-	void setCredit(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Status</em>' attribute.
-	 * @see #setStatus(String)
 	 * @see studyplan.StudyplanPackage#getCourse_Status()
-	 * @model
+	 * @model changeable="false"
 	 * @generated
 	 */
 	String getStatus();
 
 	/**
-	 * Sets the value of the '{@link studyplan.Course#getStatus <em>Status</em>}' attribute.
+	 * Returns the value of the '<em><b>Course Group</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link studyplan.CourseGroup#getCourse <em>Course</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status</em>' attribute.
-	 * @see #getStatus()
+	 * @return the value of the '<em>Course Group</em>' reference.
+	 * @see #setCourseGroup(CourseGroup)
+	 * @see studyplan.StudyplanPackage#getCourse_CourseGroup()
+	 * @see studyplan.CourseGroup#getCourse
+	 * @model opposite="course"
 	 * @generated
 	 */
-	void setStatus(String value);
+	CourseGroup getCourseGroup();
+
+	/**
+	 * Sets the value of the '{@link studyplan.Course#getCourseGroup <em>Course Group</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Course Group</em>' reference.
+	 * @see #getCourseGroup()
+	 * @generated
+	 */
+	void setCourseGroup(CourseGroup value);
 
 } // Course

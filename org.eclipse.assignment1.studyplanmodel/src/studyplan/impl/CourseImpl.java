@@ -4,12 +4,15 @@ package studyplan.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import studyplan.Course;
+import studyplan.CourseGroup;
 import studyplan.StudyplanPackage;
 
 /**
@@ -24,6 +27,7 @@ import studyplan.StudyplanPackage;
  *   <li>{@link studyplan.impl.CourseImpl#getCourseId <em>Course Id</em>}</li>
  *   <li>{@link studyplan.impl.CourseImpl#getCredit <em>Credit</em>}</li>
  *   <li>{@link studyplan.impl.CourseImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link studyplan.impl.CourseImpl#getCourseGroup <em>Course Group</em>}</li>
  * </ul>
  *
  * @generated
@@ -110,6 +114,16 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	protected String status = STATUS_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCourseGroup()
+	 * @generated
+	 * @ordered
+	 */
+	protected CourseGroup courseGroup;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -167,34 +181,8 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	 * @generated
 	 */
 	@Override
-	public void setCourseId(int newCourseId) {
-		int oldCourseId = courseId;
-		courseId = newCourseId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE__COURSE_ID, oldCourseId, courseId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public double getCredit() {
 		return credit;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCredit(double newCredit) {
-		double oldCredit = credit;
-		credit = newCredit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE__CREDIT, oldCredit, credit));
 	}
 
 	/**
@@ -213,11 +201,90 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	 * @generated
 	 */
 	@Override
-	public void setStatus(String newStatus) {
-		String oldStatus = status;
-		status = newStatus;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE__STATUS, oldStatus, status));
+	public CourseGroup getCourseGroup() {
+		if (courseGroup != null && courseGroup.eIsProxy()) {
+			InternalEObject oldCourseGroup = (InternalEObject)courseGroup;
+			courseGroup = (CourseGroup)eResolveProxy(oldCourseGroup);
+			if (courseGroup != oldCourseGroup) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StudyplanPackage.COURSE__COURSE_GROUP, oldCourseGroup, courseGroup));
+			}
+		}
+		return courseGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CourseGroup basicGetCourseGroup() {
+		return courseGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCourseGroup(CourseGroup newCourseGroup, NotificationChain msgs) {
+		CourseGroup oldCourseGroup = courseGroup;
+		courseGroup = newCourseGroup;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE__COURSE_GROUP, oldCourseGroup, newCourseGroup);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCourseGroup(CourseGroup newCourseGroup) {
+		if (newCourseGroup != courseGroup) {
+			NotificationChain msgs = null;
+			if (courseGroup != null)
+				msgs = ((InternalEObject)courseGroup).eInverseRemove(this, StudyplanPackage.COURSE_GROUP__COURSE, CourseGroup.class, msgs);
+			if (newCourseGroup != null)
+				msgs = ((InternalEObject)newCourseGroup).eInverseAdd(this, StudyplanPackage.COURSE_GROUP__COURSE, CourseGroup.class, msgs);
+			msgs = basicSetCourseGroup(newCourseGroup, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE__COURSE_GROUP, newCourseGroup, newCourseGroup));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StudyplanPackage.COURSE__COURSE_GROUP:
+				if (courseGroup != null)
+					msgs = ((InternalEObject)courseGroup).eInverseRemove(this, StudyplanPackage.COURSE_GROUP__COURSE, CourseGroup.class, msgs);
+				return basicSetCourseGroup((CourseGroup)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StudyplanPackage.COURSE__COURSE_GROUP:
+				return basicSetCourseGroup(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -236,6 +303,9 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 				return getCredit();
 			case StudyplanPackage.COURSE__STATUS:
 				return getStatus();
+			case StudyplanPackage.COURSE__COURSE_GROUP:
+				if (resolve) return getCourseGroup();
+				return basicGetCourseGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,14 +321,8 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 			case StudyplanPackage.COURSE__COURSE_NAME:
 				setCourseName((String)newValue);
 				return;
-			case StudyplanPackage.COURSE__COURSE_ID:
-				setCourseId((Integer)newValue);
-				return;
-			case StudyplanPackage.COURSE__CREDIT:
-				setCredit((Double)newValue);
-				return;
-			case StudyplanPackage.COURSE__STATUS:
-				setStatus((String)newValue);
+			case StudyplanPackage.COURSE__COURSE_GROUP:
+				setCourseGroup((CourseGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -275,14 +339,8 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 			case StudyplanPackage.COURSE__COURSE_NAME:
 				setCourseName(COURSE_NAME_EDEFAULT);
 				return;
-			case StudyplanPackage.COURSE__COURSE_ID:
-				setCourseId(COURSE_ID_EDEFAULT);
-				return;
-			case StudyplanPackage.COURSE__CREDIT:
-				setCredit(CREDIT_EDEFAULT);
-				return;
-			case StudyplanPackage.COURSE__STATUS:
-				setStatus(STATUS_EDEFAULT);
+			case StudyplanPackage.COURSE__COURSE_GROUP:
+				setCourseGroup((CourseGroup)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -304,6 +362,8 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 				return credit != CREDIT_EDEFAULT;
 			case StudyplanPackage.COURSE__STATUS:
 				return STATUS_EDEFAULT == null ? status != null : !STATUS_EDEFAULT.equals(status);
+			case StudyplanPackage.COURSE__COURSE_GROUP:
+				return courseGroup != null;
 		}
 		return super.eIsSet(featureID);
 	}

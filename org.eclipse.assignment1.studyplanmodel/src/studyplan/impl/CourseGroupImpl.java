@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -119,12 +120,64 @@ public class CourseGroupImpl extends MinimalEObjectImpl.Container implements Cou
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setCourse(Course newCourse) {
+	public NotificationChain basicSetCourse(Course newCourse, NotificationChain msgs) {
 		Course oldCourse = course;
 		course = newCourse;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE_GROUP__COURSE, oldCourse, course));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE_GROUP__COURSE, oldCourse, newCourse);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCourse(Course newCourse) {
+		if (newCourse != course) {
+			NotificationChain msgs = null;
+			if (course != null)
+				msgs = ((InternalEObject)course).eInverseRemove(this, StudyplanPackage.COURSE__COURSE_GROUP, Course.class, msgs);
+			if (newCourse != null)
+				msgs = ((InternalEObject)newCourse).eInverseAdd(this, StudyplanPackage.COURSE__COURSE_GROUP, Course.class, msgs);
+			msgs = basicSetCourse(newCourse, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.COURSE_GROUP__COURSE, newCourse, newCourse));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StudyplanPackage.COURSE_GROUP__COURSE:
+				if (course != null)
+					msgs = ((InternalEObject)course).eInverseRemove(this, StudyplanPackage.COURSE__COURSE_GROUP, Course.class, msgs);
+				return basicSetCourse((Course)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case StudyplanPackage.COURSE_GROUP__COURSE:
+				return basicSetCourse(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

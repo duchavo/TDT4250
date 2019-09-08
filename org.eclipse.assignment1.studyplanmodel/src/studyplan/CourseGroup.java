@@ -38,12 +38,14 @@ public interface CourseGroup extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Course</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link studyplan.Course#getCourseGroup <em>Course Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Course</em>' reference.
 	 * @see #setCourse(Course)
 	 * @see studyplan.StudyplanPackage#getCourseGroup_Course()
-	 * @model
+	 * @see studyplan.Course#getCourseGroup
+	 * @model opposite="courseGroup"
 	 * @generated
 	 */
 	Course getCourse();

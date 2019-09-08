@@ -167,13 +167,22 @@ public interface StudyplanPackage extends EPackage {
 	int COURSE__STATUS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Course Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COURSE__COURSE_GROUP = 4;
+
+	/**
 	 * The number of structural features of the '<em>Course</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COURSE_FEATURE_COUNT = 4;
+	int COURSE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Course</em>' class.
@@ -441,6 +450,17 @@ public interface StudyplanPackage extends EPackage {
 	EAttribute getCourse_Status();
 
 	/**
+	 * Returns the meta object for the reference '{@link studyplan.Course#getCourseGroup <em>Course Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Course Group</em>'.
+	 * @see studyplan.Course#getCourseGroup()
+	 * @see #getCourse()
+	 * @generated
+	 */
+	EReference getCourse_CourseGroup();
+
+	/**
 	 * Returns the meta object for class '{@link studyplan.Specialization <em>Specialization</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -653,6 +673,14 @@ public interface StudyplanPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COURSE__STATUS = eINSTANCE.getCourse_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Course Group</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COURSE__COURSE_GROUP = eINSTANCE.getCourse_CourseGroup();
 
 		/**
 		 * The meta object literal for the '{@link studyplan.impl.SpecializationImpl <em>Specialization</em>}' class.
