@@ -64,6 +64,7 @@ public class CourseItemProvider
 			addCourseIdPropertyDescriptor(object);
 			addCreditPropertyDescriptor(object);
 			addStatusPropertyDescriptor(object);
+			addCourseGroupPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -104,7 +105,7 @@ public class CourseItemProvider
 				 getString("_UI_Course_courseId_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Course_courseId_feature", "_UI_Course_type"),
 				 StudyplanPackage.Literals.COURSE__COURSE_ID,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
@@ -126,7 +127,7 @@ public class CourseItemProvider
 				 getString("_UI_Course_credit_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Course_credit_feature", "_UI_Course_type"),
 				 StudyplanPackage.Literals.COURSE__CREDIT,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
@@ -148,10 +149,32 @@ public class CourseItemProvider
 				 getString("_UI_Course_status_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Course_status_feature", "_UI_Course_type"),
 				 StudyplanPackage.Literals.COURSE__STATUS,
-				 true,
+				 false,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Course Group feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCourseGroupPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Course_courseGroup_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Course_courseGroup_feature", "_UI_Course_type"),
+				 StudyplanPackage.Literals.COURSE__COURSE_GROUP,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
