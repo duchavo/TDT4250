@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link studyplan.Specialization#getSpecName <em>Spec Name</em>}</li>
+ *   <li>{@link studyplan.Specialization#getSemesters <em>Semesters</em>}</li>
+ *   <li>{@link studyplan.Specialization#getSpecialization <em>Specialization</em>}</li>
  *   <li>{@link studyplan.Specialization#getCourseGroup <em>Course Group</em>}</li>
  * </ul>
  *
@@ -47,15 +49,49 @@ public interface Specialization extends EObject {
 	void setSpecName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Course Group</b></em>' containment reference list.
-	 * The list contents are of type {@link studyplan.CourseGroup}.
+	 * Returns the value of the '<em><b>Semesters</b></em>' containment reference list.
+	 * The list contents are of type {@link studyplan.Semester}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Course Group</em>' containment reference list.
-	 * @see studyplan.StudyplanPackage#getSpecialization_CourseGroup()
+	 * @return the value of the '<em>Semesters</em>' containment reference list.
+	 * @see studyplan.StudyplanPackage#getSpecialization_Semesters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<CourseGroup> getCourseGroup();
+	EList<Semester> getSemesters();
+
+	/**
+	 * Returns the value of the '<em><b>Specialization</b></em>' containment reference list.
+	 * The list contents are of type {@link studyplan.Specialization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Specialization</em>' containment reference list.
+	 * @see studyplan.StudyplanPackage#getSpecialization_Specialization()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Specialization> getSpecialization();
+
+	/**
+	 * Returns the value of the '<em><b>Course Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Course Group</em>' reference.
+	 * @see #setCourseGroup(CourseGroup)
+	 * @see studyplan.StudyplanPackage#getSpecialization_CourseGroup()
+	 * @model required="true"
+	 * @generated
+	 */
+	CourseGroup getCourseGroup();
+
+	/**
+	 * Sets the value of the '{@link studyplan.Specialization#getCourseGroup <em>Course Group</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Course Group</em>' reference.
+	 * @see #getCourseGroup()
+	 * @generated
+	 */
+	void setCourseGroup(CourseGroup value);
 
 } // Specialization

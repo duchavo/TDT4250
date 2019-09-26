@@ -64,6 +64,7 @@ public class SpecializationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addSpecNamePropertyDescriptor(object);
+			addCourseGroupPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,6 +92,28 @@ public class SpecializationItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Course Group feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCourseGroupPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Specialization_courseGroup_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Specialization_courseGroup_feature", "_UI_Specialization_type"),
+				 StudyplanPackage.Literals.SPECIALIZATION__COURSE_GROUP,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -102,7 +125,8 @@ public class SpecializationItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(StudyplanPackage.Literals.SPECIALIZATION__COURSE_GROUP);
+			childrenFeatures.add(StudyplanPackage.Literals.SPECIALIZATION__SEMESTERS);
+			childrenFeatures.add(StudyplanPackage.Literals.SPECIALIZATION__SPECIALIZATION);
 		}
 		return childrenFeatures;
 	}
@@ -161,7 +185,8 @@ public class SpecializationItemProvider
 			case StudyplanPackage.SPECIALIZATION__SPEC_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
+			case StudyplanPackage.SPECIALIZATION__SEMESTERS:
+			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -181,8 +206,13 @@ public class SpecializationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(StudyplanPackage.Literals.SPECIALIZATION__COURSE_GROUP,
-				 StudyplanFactory.eINSTANCE.createCourseGroup()));
+				(StudyplanPackage.Literals.SPECIALIZATION__SEMESTERS,
+				 StudyplanFactory.eINSTANCE.createSemester()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(StudyplanPackage.Literals.SPECIALIZATION__SPECIALIZATION,
+				 StudyplanFactory.eINSTANCE.createSpecialization()));
 	}
 
 	/**

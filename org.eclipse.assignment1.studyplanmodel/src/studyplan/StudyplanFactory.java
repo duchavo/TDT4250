@@ -22,6 +22,15 @@ public interface StudyplanFactory extends EFactory {
 	StudyplanFactory eINSTANCE = studyplan.impl.StudyplanFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Study Plan</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Study Plan</em>'.
+	 * @generated
+	 */
+	StudyPlan createStudyPlan();
+
+	/**
 	 * Returns a new object of class '<em>Semester</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link studyplan.CourseGroup#getGroup <em>Group</em>}</li>
+ *   <li>{@link studyplan.CourseGroup#getCourseStatus <em>Course Status</em>}</li>
+ *   <li>{@link studyplan.CourseGroup#getSemester <em>Semester</em>}</li>
  *   <li>{@link studyplan.CourseGroup#getCourse <em>Course</em>}</li>
  * </ul>
  *
@@ -37,24 +39,69 @@ public interface CourseGroup extends EObject {
 	EList<String> getGroup();
 
 	/**
-	 * Returns the value of the '<em><b>Course</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link studyplan.Course#getCourseGroup <em>Course Group</em>}'.
+	 * Returns the value of the '<em><b>Course Status</b></em>' attribute.
+	 * The literals are from the enumeration {@link studyplan.CourseStatus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Course</em>' reference.
+	 * @return the value of the '<em>Course Status</em>' attribute.
+	 * @see studyplan.CourseStatus
+	 * @see #setCourseStatus(CourseStatus)
+	 * @see studyplan.StudyplanPackage#getCourseGroup_CourseStatus()
+	 * @model
+	 * @generated
+	 */
+	CourseStatus getCourseStatus();
+
+	/**
+	 * Sets the value of the '{@link studyplan.CourseGroup#getCourseStatus <em>Course Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Course Status</em>' attribute.
+	 * @see studyplan.CourseStatus
+	 * @see #getCourseStatus()
+	 * @generated
+	 */
+	void setCourseStatus(CourseStatus value);
+
+	/**
+	 * Returns the value of the '<em><b>Semester</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Semester</em>' containment reference.
+	 * @see #setSemester(Semester)
+	 * @see studyplan.StudyplanPackage#getCourseGroup_Semester()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Semester getSemester();
+
+	/**
+	 * Sets the value of the '{@link studyplan.CourseGroup#getSemester <em>Semester</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Semester</em>' containment reference.
+	 * @see #getSemester()
+	 * @generated
+	 */
+	void setSemester(Semester value);
+
+	/**
+	 * Returns the value of the '<em><b>Course</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Course</em>' containment reference.
 	 * @see #setCourse(Course)
 	 * @see studyplan.StudyplanPackage#getCourseGroup_Course()
-	 * @see studyplan.Course#getCourseGroup
-	 * @model opposite="courseGroup"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Course getCourse();
 
 	/**
-	 * Sets the value of the '{@link studyplan.CourseGroup#getCourse <em>Course</em>}' reference.
+	 * Sets the value of the '{@link studyplan.CourseGroup#getCourse <em>Course</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Course</em>' reference.
+	 * @param value the new value of the '<em>Course</em>' containment reference.
 	 * @see #getCourse()
 	 * @generated
 	 */

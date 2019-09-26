@@ -17,9 +17,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import studyplan.CourseGroup;
 import studyplan.FieldOfStudy;
+import studyplan.Semester;
 import studyplan.Specialization;
 import studyplan.StudyplanPackage;
 
@@ -33,7 +32,7 @@ import studyplan.StudyplanPackage;
  * <ul>
  *   <li>{@link studyplan.impl.FieldOfStudyImpl#getFieldName <em>Field Name</em>}</li>
  *   <li>{@link studyplan.impl.FieldOfStudyImpl#getSpecialization <em>Specialization</em>}</li>
- *   <li>{@link studyplan.impl.FieldOfStudyImpl#getCourseGroup <em>Course Group</em>}</li>
+ *   <li>{@link studyplan.impl.FieldOfStudyImpl#getSemesters <em>Semesters</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,14 +69,14 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 	protected Specialization specialization;
 
 	/**
-	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' containment reference list.
+	 * The cached value of the '{@link #getSemesters() <em>Semesters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCourseGroup()
+	 * @see #getSemesters()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CourseGroup> courseGroup;
+	protected EList<Semester> semesters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,11 +171,11 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 	 * @generated
 	 */
 	@Override
-	public EList<CourseGroup> getCourseGroup() {
-		if (courseGroup == null) {
-			courseGroup = new EObjectContainmentEList<CourseGroup>(CourseGroup.class, this, StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP);
+	public EList<Semester> getSemesters() {
+		if (semesters == null) {
+			semesters = new EObjectContainmentEList<Semester>(Semester.class, this, StudyplanPackage.FIELD_OF_STUDY__SEMESTERS);
 		}
-		return courseGroup;
+		return semesters;
 	}
 
 	/**
@@ -189,8 +188,8 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 		switch (featureID) {
 			case StudyplanPackage.FIELD_OF_STUDY__SPECIALIZATION:
 				return basicSetSpecialization(null, msgs);
-			case StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP:
-				return ((InternalEList<?>)getCourseGroup()).basicRemove(otherEnd, msgs);
+			case StudyplanPackage.FIELD_OF_STUDY__SEMESTERS:
+				return ((InternalEList<?>)getSemesters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -207,8 +206,8 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 				return getFieldName();
 			case StudyplanPackage.FIELD_OF_STUDY__SPECIALIZATION:
 				return getSpecialization();
-			case StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP:
-				return getCourseGroup();
+			case StudyplanPackage.FIELD_OF_STUDY__SEMESTERS:
+				return getSemesters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -228,9 +227,9 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 			case StudyplanPackage.FIELD_OF_STUDY__SPECIALIZATION:
 				setSpecialization((Specialization)newValue);
 				return;
-			case StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP:
-				getCourseGroup().clear();
-				getCourseGroup().addAll((Collection<? extends CourseGroup>)newValue);
+			case StudyplanPackage.FIELD_OF_STUDY__SEMESTERS:
+				getSemesters().clear();
+				getSemesters().addAll((Collection<? extends Semester>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -250,8 +249,8 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 			case StudyplanPackage.FIELD_OF_STUDY__SPECIALIZATION:
 				setSpecialization((Specialization)null);
 				return;
-			case StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP:
-				getCourseGroup().clear();
+			case StudyplanPackage.FIELD_OF_STUDY__SEMESTERS:
+				getSemesters().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -269,8 +268,8 @@ public class FieldOfStudyImpl extends MinimalEObjectImpl.Container implements Fi
 				return FIELD_NAME_EDEFAULT == null ? fieldName != null : !FIELD_NAME_EDEFAULT.equals(fieldName);
 			case StudyplanPackage.FIELD_OF_STUDY__SPECIALIZATION:
 				return specialization != null;
-			case StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP:
-				return courseGroup != null && !courseGroup.isEmpty();
+			case StudyplanPackage.FIELD_OF_STUDY__SEMESTERS:
+				return semesters != null && !semesters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

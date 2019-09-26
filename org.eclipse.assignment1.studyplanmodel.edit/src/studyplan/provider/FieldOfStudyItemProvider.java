@@ -103,7 +103,7 @@ public class FieldOfStudyItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(StudyplanPackage.Literals.FIELD_OF_STUDY__SPECIALIZATION);
-			childrenFeatures.add(StudyplanPackage.Literals.FIELD_OF_STUDY__COURSE_GROUP);
+			childrenFeatures.add(StudyplanPackage.Literals.FIELD_OF_STUDY__SEMESTERS);
 		}
 		return childrenFeatures;
 	}
@@ -163,7 +163,7 @@ public class FieldOfStudyItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case StudyplanPackage.FIELD_OF_STUDY__SPECIALIZATION:
-			case StudyplanPackage.FIELD_OF_STUDY__COURSE_GROUP:
+			case StudyplanPackage.FIELD_OF_STUDY__SEMESTERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -188,8 +188,8 @@ public class FieldOfStudyItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(StudyplanPackage.Literals.FIELD_OF_STUDY__COURSE_GROUP,
-				 StudyplanFactory.eINSTANCE.createCourseGroup()));
+				(StudyplanPackage.Literals.FIELD_OF_STUDY__SEMESTERS,
+				 StudyplanFactory.eINSTANCE.createSemester()));
 	}
 
 	/**

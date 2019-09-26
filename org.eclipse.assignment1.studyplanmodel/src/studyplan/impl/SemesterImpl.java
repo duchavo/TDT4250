@@ -2,17 +2,22 @@
  */
 package studyplan.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import studyplan.CourseGroup;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import studyplan.Course;
 import studyplan.Semester;
+import studyplan.SemesterType;
 import studyplan.StudyplanPackage;
 
 /**
@@ -23,55 +28,14 @@ import studyplan.StudyplanPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link studyplan.impl.SemesterImpl#getSpring <em>Spring</em>}</li>
- *   <li>{@link studyplan.impl.SemesterImpl#getFall <em>Fall</em>}</li>
  *   <li>{@link studyplan.impl.SemesterImpl#getYear <em>Year</em>}</li>
- *   <li>{@link studyplan.impl.SemesterImpl#getCourseGroup <em>Course Group</em>}</li>
+ *   <li>{@link studyplan.impl.SemesterImpl#getCourses <em>Courses</em>}</li>
+ *   <li>{@link studyplan.impl.SemesterImpl#getSemesterType <em>Semester Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SemesterImpl extends MinimalEObjectImpl.Container implements Semester {
-	/**
-	 * The default value of the '{@link #getSpring() <em>Spring</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSpring()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SPRING_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSpring() <em>Spring</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSpring()
-	 * @generated
-	 * @ordered
-	 */
-	protected String spring = SPRING_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getFall() <em>Fall</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFall()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String FALL_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFall() <em>Fall</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFall()
-	 * @generated
-	 * @ordered
-	 */
-	protected String fall = FALL_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getYear() <em>Year</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -93,14 +57,34 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	protected int year = YEAR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' containment reference.
+	 * The cached value of the '{@link #getCourses() <em>Courses</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCourseGroup()
+	 * @see #getCourses()
 	 * @generated
 	 * @ordered
 	 */
-	protected CourseGroup courseGroup;
+	protected EList<Course> courses;
+
+	/**
+	 * The default value of the '{@link #getSemesterType() <em>Semester Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemesterType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SemesterType SEMESTER_TYPE_EDEFAULT = SemesterType.SPRING;
+
+	/**
+	 * The cached value of the '{@link #getSemesterType() <em>Semester Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemesterType()
+	 * @generated
+	 * @ordered
+	 */
+	protected SemesterType semesterType = SEMESTER_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,52 +103,6 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	@Override
 	protected EClass eStaticClass() {
 		return StudyplanPackage.Literals.SEMESTER;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getSpring() {
-		return spring;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSpring(String newSpring) {
-		String oldSpring = spring;
-		spring = newSpring;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SEMESTER__SPRING, oldSpring, spring));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getFall() {
-		return fall;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFall(String newFall) {
-		String oldFall = fall;
-		fall = newFall;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SEMESTER__FALL, oldFall, fall));
 	}
 
 	/**
@@ -196,23 +134,11 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	 * @generated
 	 */
 	@Override
-	public CourseGroup getCourseGroup() {
-		return courseGroup;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCourseGroup(CourseGroup newCourseGroup, NotificationChain msgs) {
-		CourseGroup oldCourseGroup = courseGroup;
-		courseGroup = newCourseGroup;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StudyplanPackage.SEMESTER__COURSE_GROUP, oldCourseGroup, newCourseGroup);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Course> getCourses() {
+		if (courses == null) {
+			courses = new EObjectContainmentEList<Course>(Course.class, this, StudyplanPackage.SEMESTER__COURSES);
 		}
-		return msgs;
+		return courses;
 	}
 
 	/**
@@ -221,18 +147,21 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	 * @generated
 	 */
 	@Override
-	public void setCourseGroup(CourseGroup newCourseGroup) {
-		if (newCourseGroup != courseGroup) {
-			NotificationChain msgs = null;
-			if (courseGroup != null)
-				msgs = ((InternalEObject)courseGroup).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StudyplanPackage.SEMESTER__COURSE_GROUP, null, msgs);
-			if (newCourseGroup != null)
-				msgs = ((InternalEObject)newCourseGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StudyplanPackage.SEMESTER__COURSE_GROUP, null, msgs);
-			msgs = basicSetCourseGroup(newCourseGroup, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SEMESTER__COURSE_GROUP, newCourseGroup, newCourseGroup));
+	public SemesterType getSemesterType() {
+		return semesterType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSemesterType(SemesterType newSemesterType) {
+		SemesterType oldSemesterType = semesterType;
+		semesterType = newSemesterType == null ? SEMESTER_TYPE_EDEFAULT : newSemesterType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SEMESTER__SEMESTER_TYPE, oldSemesterType, semesterType));
 	}
 
 	/**
@@ -243,8 +172,8 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StudyplanPackage.SEMESTER__COURSE_GROUP:
-				return basicSetCourseGroup(null, msgs);
+			case StudyplanPackage.SEMESTER__COURSES:
+				return ((InternalEList<?>)getCourses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -257,14 +186,12 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StudyplanPackage.SEMESTER__SPRING:
-				return getSpring();
-			case StudyplanPackage.SEMESTER__FALL:
-				return getFall();
 			case StudyplanPackage.SEMESTER__YEAR:
 				return getYear();
-			case StudyplanPackage.SEMESTER__COURSE_GROUP:
-				return getCourseGroup();
+			case StudyplanPackage.SEMESTER__COURSES:
+				return getCourses();
+			case StudyplanPackage.SEMESTER__SEMESTER_TYPE:
+				return getSemesterType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -274,20 +201,19 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StudyplanPackage.SEMESTER__SPRING:
-				setSpring((String)newValue);
-				return;
-			case StudyplanPackage.SEMESTER__FALL:
-				setFall((String)newValue);
-				return;
 			case StudyplanPackage.SEMESTER__YEAR:
 				setYear((Integer)newValue);
 				return;
-			case StudyplanPackage.SEMESTER__COURSE_GROUP:
-				setCourseGroup((CourseGroup)newValue);
+			case StudyplanPackage.SEMESTER__COURSES:
+				getCourses().clear();
+				getCourses().addAll((Collection<? extends Course>)newValue);
+				return;
+			case StudyplanPackage.SEMESTER__SEMESTER_TYPE:
+				setSemesterType((SemesterType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -301,17 +227,14 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StudyplanPackage.SEMESTER__SPRING:
-				setSpring(SPRING_EDEFAULT);
-				return;
-			case StudyplanPackage.SEMESTER__FALL:
-				setFall(FALL_EDEFAULT);
-				return;
 			case StudyplanPackage.SEMESTER__YEAR:
 				setYear(YEAR_EDEFAULT);
 				return;
-			case StudyplanPackage.SEMESTER__COURSE_GROUP:
-				setCourseGroup((CourseGroup)null);
+			case StudyplanPackage.SEMESTER__COURSES:
+				getCourses().clear();
+				return;
+			case StudyplanPackage.SEMESTER__SEMESTER_TYPE:
+				setSemesterType(SEMESTER_TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -325,14 +248,12 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StudyplanPackage.SEMESTER__SPRING:
-				return SPRING_EDEFAULT == null ? spring != null : !SPRING_EDEFAULT.equals(spring);
-			case StudyplanPackage.SEMESTER__FALL:
-				return FALL_EDEFAULT == null ? fall != null : !FALL_EDEFAULT.equals(fall);
 			case StudyplanPackage.SEMESTER__YEAR:
 				return year != YEAR_EDEFAULT;
-			case StudyplanPackage.SEMESTER__COURSE_GROUP:
-				return courseGroup != null;
+			case StudyplanPackage.SEMESTER__COURSES:
+				return courses != null && !courses.isEmpty();
+			case StudyplanPackage.SEMESTER__SEMESTER_TYPE:
+				return semesterType != SEMESTER_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -347,12 +268,10 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (spring: ");
-		result.append(spring);
-		result.append(", fall: ");
-		result.append(fall);
-		result.append(", year: ");
+		result.append(" (year: ");
 		result.append(year);
+		result.append(", semesterType: ");
+		result.append(semesterType);
 		result.append(')');
 		return result.toString();
 	}

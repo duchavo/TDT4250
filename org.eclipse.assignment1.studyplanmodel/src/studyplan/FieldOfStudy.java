@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link studyplan.FieldOfStudy#getFieldName <em>Field Name</em>}</li>
  *   <li>{@link studyplan.FieldOfStudy#getSpecialization <em>Specialization</em>}</li>
- *   <li>{@link studyplan.FieldOfStudy#getCourseGroup <em>Course Group</em>}</li>
+ *   <li>{@link studyplan.FieldOfStudy#getSemesters <em>Semesters</em>}</li>
  * </ul>
  *
  * @see studyplan.StudyplanPackage#getFieldOfStudy()
@@ -54,7 +54,7 @@ public interface FieldOfStudy extends EObject {
 	 * @return the value of the '<em>Specialization</em>' containment reference.
 	 * @see #setSpecialization(Specialization)
 	 * @see studyplan.StudyplanPackage#getFieldOfStudy_Specialization()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Specialization getSpecialization();
@@ -70,15 +70,15 @@ public interface FieldOfStudy extends EObject {
 	void setSpecialization(Specialization value);
 
 	/**
-	 * Returns the value of the '<em><b>Course Group</b></em>' containment reference list.
-	 * The list contents are of type {@link studyplan.CourseGroup}.
+	 * Returns the value of the '<em><b>Semesters</b></em>' containment reference list.
+	 * The list contents are of type {@link studyplan.Semester}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Course Group</em>' containment reference list.
-	 * @see studyplan.StudyplanPackage#getFieldOfStudy_CourseGroup()
+	 * @return the value of the '<em>Semesters</em>' containment reference list.
+	 * @see studyplan.StudyplanPackage#getFieldOfStudy_Semesters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<CourseGroup> getCourseGroup();
+	EList<Semester> getSemesters();
 
 } // FieldOfStudy

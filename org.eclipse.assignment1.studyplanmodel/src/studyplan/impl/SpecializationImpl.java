@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import studyplan.CourseGroup;
+import studyplan.Semester;
 import studyplan.Specialization;
 import studyplan.StudyplanPackage;
 
@@ -31,6 +32,8 @@ import studyplan.StudyplanPackage;
  * </p>
  * <ul>
  *   <li>{@link studyplan.impl.SpecializationImpl#getSpecName <em>Spec Name</em>}</li>
+ *   <li>{@link studyplan.impl.SpecializationImpl#getSemesters <em>Semesters</em>}</li>
+ *   <li>{@link studyplan.impl.SpecializationImpl#getSpecialization <em>Specialization</em>}</li>
  *   <li>{@link studyplan.impl.SpecializationImpl#getCourseGroup <em>Course Group</em>}</li>
  * </ul>
  *
@@ -58,14 +61,34 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	protected String specName = SPEC_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' containment reference list.
+	 * The cached value of the '{@link #getSemesters() <em>Semesters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSemesters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Semester> semesters;
+
+	/**
+	 * The cached value of the '{@link #getSpecialization() <em>Specialization</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSpecialization()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Specialization> specialization;
+
+	/**
+	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCourseGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CourseGroup> courseGroup;
+	protected CourseGroup courseGroup;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,11 +138,64 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public EList<CourseGroup> getCourseGroup() {
-		if (courseGroup == null) {
-			courseGroup = new EObjectContainmentEList<CourseGroup>(CourseGroup.class, this, StudyplanPackage.SPECIALIZATION__COURSE_GROUP);
+	public EList<Semester> getSemesters() {
+		if (semesters == null) {
+			semesters = new EObjectContainmentEList<Semester>(Semester.class, this, StudyplanPackage.SPECIALIZATION__SEMESTERS);
+		}
+		return semesters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Specialization> getSpecialization() {
+		if (specialization == null) {
+			specialization = new EObjectContainmentEList<Specialization>(Specialization.class, this, StudyplanPackage.SPECIALIZATION__SPECIALIZATION);
+		}
+		return specialization;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CourseGroup getCourseGroup() {
+		if (courseGroup != null && courseGroup.eIsProxy()) {
+			InternalEObject oldCourseGroup = (InternalEObject)courseGroup;
+			courseGroup = (CourseGroup)eResolveProxy(oldCourseGroup);
+			if (courseGroup != oldCourseGroup) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StudyplanPackage.SPECIALIZATION__COURSE_GROUP, oldCourseGroup, courseGroup));
+			}
 		}
 		return courseGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CourseGroup basicGetCourseGroup() {
+		return courseGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCourseGroup(CourseGroup newCourseGroup) {
+		CourseGroup oldCourseGroup = courseGroup;
+		courseGroup = newCourseGroup;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SPECIALIZATION__COURSE_GROUP, oldCourseGroup, courseGroup));
 	}
 
 	/**
@@ -130,8 +206,10 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
-				return ((InternalEList<?>)getCourseGroup()).basicRemove(otherEnd, msgs);
+			case StudyplanPackage.SPECIALIZATION__SEMESTERS:
+				return ((InternalEList<?>)getSemesters()).basicRemove(otherEnd, msgs);
+			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
+				return ((InternalEList<?>)getSpecialization()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -146,8 +224,13 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case StudyplanPackage.SPECIALIZATION__SPEC_NAME:
 				return getSpecName();
+			case StudyplanPackage.SPECIALIZATION__SEMESTERS:
+				return getSemesters();
+			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
+				return getSpecialization();
 			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
-				return getCourseGroup();
+				if (resolve) return getCourseGroup();
+				return basicGetCourseGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,9 +247,16 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 			case StudyplanPackage.SPECIALIZATION__SPEC_NAME:
 				setSpecName((String)newValue);
 				return;
+			case StudyplanPackage.SPECIALIZATION__SEMESTERS:
+				getSemesters().clear();
+				getSemesters().addAll((Collection<? extends Semester>)newValue);
+				return;
+			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
+				getSpecialization().clear();
+				getSpecialization().addAll((Collection<? extends Specialization>)newValue);
+				return;
 			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
-				getCourseGroup().clear();
-				getCourseGroup().addAll((Collection<? extends CourseGroup>)newValue);
+				setCourseGroup((CourseGroup)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,8 +273,14 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 			case StudyplanPackage.SPECIALIZATION__SPEC_NAME:
 				setSpecName(SPEC_NAME_EDEFAULT);
 				return;
+			case StudyplanPackage.SPECIALIZATION__SEMESTERS:
+				getSemesters().clear();
+				return;
+			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
+				getSpecialization().clear();
+				return;
 			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
-				getCourseGroup().clear();
+				setCourseGroup((CourseGroup)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -200,8 +296,12 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case StudyplanPackage.SPECIALIZATION__SPEC_NAME:
 				return SPEC_NAME_EDEFAULT == null ? specName != null : !SPEC_NAME_EDEFAULT.equals(specName);
+			case StudyplanPackage.SPECIALIZATION__SEMESTERS:
+				return semesters != null && !semesters.isEmpty();
+			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
+				return specialization != null && !specialization.isEmpty();
 			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
-				return courseGroup != null && !courseGroup.isEmpty();
+				return courseGroup != null;
 		}
 		return super.eIsSet(featureID);
 	}

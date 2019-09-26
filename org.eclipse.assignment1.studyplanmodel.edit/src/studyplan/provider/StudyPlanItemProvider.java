@@ -11,6 +11,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -22,16 +24,17 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import studyplan.Course;
+import studyplan.StudyPlan;
+import studyplan.StudyplanFactory;
 import studyplan.StudyplanPackage;
 
 /**
- * This is the item provider adapter for a {@link studyplan.Course} object.
+ * This is the item provider adapter for a {@link studyplan.StudyPlan} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CourseItemProvider 
+public class StudyPlanItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +48,7 @@ public class CourseItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CourseItemProvider(AdapterFactory adapterFactory) {
+	public StudyPlanItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,28 +63,25 @@ public class CourseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCourseNamePropertyDescriptor(object);
-			addCourseCodePropertyDescriptor(object);
-			addCreditPropertyDescriptor(object);
-			addStatusPropertyDescriptor(object);
+			addPlanNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Course Name feature.
+	 * This adds a property descriptor for the Plan Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCourseNamePropertyDescriptor(Object object) {
+	protected void addPlanNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Course_courseName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Course_courseName_feature", "_UI_Course_type"),
-				 StudyplanPackage.Literals.COURSE__COURSE_NAME,
+				 getString("_UI_StudyPlan_planName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StudyPlan_planName_feature", "_UI_StudyPlan_type"),
+				 StudyplanPackage.Literals.STUDY_PLAN__PLAN_NAME,
 				 true,
 				 false,
 				 false,
@@ -91,80 +91,46 @@ public class CourseItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Course Code feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCourseCodePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Course_courseCode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Course_courseCode_feature", "_UI_Course_type"),
-				 StudyplanPackage.Literals.COURSE__COURSE_CODE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(StudyplanPackage.Literals.STUDY_PLAN__PROGRAM);
+			childrenFeatures.add(StudyplanPackage.Literals.STUDY_PLAN__COURSES);
+			childrenFeatures.add(StudyplanPackage.Literals.STUDY_PLAN__SEMESTER);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Credit feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCreditPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Course_credit_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Course_credit_feature", "_UI_Course_type"),
-				 StudyplanPackage.Literals.COURSE__CREDIT,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
-	 * This adds a property descriptor for the Status feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStatusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Course_status_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Course_status_feature", "_UI_Course_type"),
-				 StudyplanPackage.Literals.COURSE__STATUS,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns Course.gif.
+	 * This returns StudyPlan.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Course"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StudyPlan"));
 	}
 
 	/**
@@ -175,10 +141,10 @@ public class CourseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Course)object).getCourseName();
+		String label = ((StudyPlan)object).getPlanName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Course_type") :
-			getString("_UI_Course_type") + " " + label;
+			getString("_UI_StudyPlan_type") :
+			getString("_UI_StudyPlan_type") + " " + label;
 	}
 
 
@@ -193,12 +159,14 @@ public class CourseItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Course.class)) {
-			case StudyplanPackage.COURSE__COURSE_NAME:
-			case StudyplanPackage.COURSE__COURSE_CODE:
-			case StudyplanPackage.COURSE__CREDIT:
-			case StudyplanPackage.COURSE__STATUS:
+		switch (notification.getFeatureID(StudyPlan.class)) {
+			case StudyplanPackage.STUDY_PLAN__PLAN_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case StudyplanPackage.STUDY_PLAN__PROGRAM:
+			case StudyplanPackage.STUDY_PLAN__COURSES:
+			case StudyplanPackage.STUDY_PLAN__SEMESTER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -214,6 +182,21 @@ public class CourseItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(StudyplanPackage.Literals.STUDY_PLAN__PROGRAM,
+				 StudyplanFactory.eINSTANCE.createFieldOfStudy()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(StudyplanPackage.Literals.STUDY_PLAN__COURSES,
+				 StudyplanFactory.eINSTANCE.createCourse()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(StudyplanPackage.Literals.STUDY_PLAN__SEMESTER,
+				 StudyplanFactory.eINSTANCE.createSemester()));
 	}
 
 	/**

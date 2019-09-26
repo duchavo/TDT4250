@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import studyplan.Semester;
+import studyplan.StudyPlan;
 import studyplan.StudyplanFactory;
 import studyplan.StudyplanPackage;
 
@@ -60,7 +60,7 @@ public class StudyplanExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.studyplan"));
-				Semester root = StudyplanFactory.eINSTANCE.createSemester();
+				StudyPlan root = StudyplanFactory.eINSTANCE.createStudyPlan();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

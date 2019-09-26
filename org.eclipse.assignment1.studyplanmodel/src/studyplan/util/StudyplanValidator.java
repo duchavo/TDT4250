@@ -2,6 +2,8 @@
  */
 package studyplan.util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -86,6 +88,8 @@ public class StudyplanValidator extends EObjectValidator {
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
+			case StudyplanPackage.STUDY_PLAN:
+				return validateStudyPlan((StudyPlan)value, diagnostics, context);
 			case StudyplanPackage.SEMESTER:
 				return validateSemester((Semester)value, diagnostics, context);
 			case StudyplanPackage.COURSE:
@@ -96,6 +100,10 @@ public class StudyplanValidator extends EObjectValidator {
 				return validateFieldOfStudy((FieldOfStudy)value, diagnostics, context);
 			case StudyplanPackage.COURSE_GROUP:
 				return validateCourseGroup((CourseGroup)value, diagnostics, context);
+			case StudyplanPackage.SEMESTER_TYPE:
+				return validateSemesterType((SemesterType)value, diagnostics, context);
+			case StudyplanPackage.COURSE_STATUS:
+				return validateCourseStatus((CourseStatus)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -106,8 +114,55 @@ public class StudyplanValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateStudyPlan(StudyPlan studyPlan, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(studyPlan, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateSemester(Semester semester, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(semester, diagnostics, context);
+		if (!validate_NoCircularContainment(semester, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validateSemester_maxCredit(semester, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the maxCredit constraint of '<em>Semester</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSemester_maxCredit(Semester semester, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "maxCredit", getObjectLabel(semester, context) },
+						 new Object[] { semester },
+						 context));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -126,8 +181,9 @@ public class StudyplanValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(course, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(course, diagnostics, context);
 		if (result || diagnostics != null) result &= validateCourse_maxNameLength(course, diagnostics, context);
-		if (result || diagnostics != null) result &= validateCourse_maxDigit(course, diagnostics, context);
-		if (result || diagnostics != null) result &= validateCourse_isDouble(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCourse_correctStatus(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCourse_isValidCredit(course, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCourse_isValidCode(course, diagnostics, context);
 		return result;
 	}
 
@@ -142,7 +198,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		if (! (course.getCourseName().length() <= 500)) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -160,17 +216,21 @@ public class StudyplanValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the maxDigit constraint of '<em>Course</em>'.
+	 * Validates the correctStatus constraint of '<em>Course</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCourse_maxDigit(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCourse_correctStatus(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		List<String> status = new ArrayList<String>();
+		status.add("O");
+		status.add("VA");
+		status.add("VB");
+		if (! (status.contains(course.getStatus()))) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -178,7 +238,7 @@ public class StudyplanValidator extends EObjectValidator {
 						 DIAGNOSTIC_SOURCE,
 						 0,
 						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "maxDigit", getObjectLabel(course, context) },
+						 new Object[] { "correctStatus", getObjectLabel(course, context) },
 						 new Object[] { course },
 						 context));
 			}
@@ -188,17 +248,22 @@ public class StudyplanValidator extends EObjectValidator {
 	}
 
 	/**
-	 * Validates the isDouble constraint of '<em>Course</em>'.
+	 * Validates the isValidCredit constraint of '<em>Course</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCourse_isDouble(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateCourse_isValidCredit(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		List<Double> credits = new ArrayList<Double>();
+		credits.add(5.0);
+		credits.add(7.5);
+		credits.add(10.0);
+		credits.add(15.0);
+		if (! (credits.contains(course.getCredit()))) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -206,7 +271,35 @@ public class StudyplanValidator extends EObjectValidator {
 						 DIAGNOSTIC_SOURCE,
 						 0,
 						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "isDouble", getObjectLabel(course, context) },
+						 new Object[] { "isValidCredit", getObjectLabel(course, context) },
+						 new Object[] { course },
+						 context));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the isValidCode constraint of '<em>Course</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCourse_isValidCode(Course course, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (! (String.valueOf(course.getCourseCode()).length() == 4)) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "isValidCode", getObjectLabel(course, context) },
 						 new Object[] { course },
 						 context));
 			}
@@ -245,7 +338,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		if (! (specialization.getSpecName().length() <= 500)) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -292,7 +385,7 @@ public class StudyplanValidator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		if (! (fieldOfStudy.getFieldName().length() <= 500)) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -316,6 +409,24 @@ public class StudyplanValidator extends EObjectValidator {
 	 */
 	public boolean validateCourseGroup(CourseGroup courseGroup, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(courseGroup, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSemesterType(SemesterType semesterType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCourseStatus(CourseStatus courseStatus, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

@@ -2,6 +2,7 @@
  */
 package studyplan;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,61 +14,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link studyplan.Semester#getSpring <em>Spring</em>}</li>
- *   <li>{@link studyplan.Semester#getFall <em>Fall</em>}</li>
  *   <li>{@link studyplan.Semester#getYear <em>Year</em>}</li>
- *   <li>{@link studyplan.Semester#getCourseGroup <em>Course Group</em>}</li>
+ *   <li>{@link studyplan.Semester#getCourses <em>Courses</em>}</li>
+ *   <li>{@link studyplan.Semester#getSemesterType <em>Semester Type</em>}</li>
  * </ul>
  *
  * @see studyplan.StudyplanPackage#getSemester()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='maxCredit'"
  * @generated
  */
 public interface Semester extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Spring</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Spring</em>' attribute.
-	 * @see #setSpring(String)
-	 * @see studyplan.StudyplanPackage#getSemester_Spring()
-	 * @model
-	 * @generated
-	 */
-	String getSpring();
-
-	/**
-	 * Sets the value of the '{@link studyplan.Semester#getSpring <em>Spring</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Spring</em>' attribute.
-	 * @see #getSpring()
-	 * @generated
-	 */
-	void setSpring(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Fall</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fall</em>' attribute.
-	 * @see #setFall(String)
-	 * @see studyplan.StudyplanPackage#getSemester_Fall()
-	 * @model
-	 * @generated
-	 */
-	String getFall();
-
-	/**
-	 * Sets the value of the '{@link studyplan.Semester#getFall <em>Fall</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fall</em>' attribute.
-	 * @see #getFall()
-	 * @generated
-	 */
-	void setFall(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Year</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -91,25 +47,40 @@ public interface Semester extends EObject {
 	void setYear(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Course Group</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Courses</b></em>' containment reference list.
+	 * The list contents are of type {@link studyplan.Course}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Course Group</em>' containment reference.
-	 * @see #setCourseGroup(CourseGroup)
-	 * @see studyplan.StudyplanPackage#getSemester_CourseGroup()
+	 * @return the value of the '<em>Courses</em>' containment reference list.
+	 * @see studyplan.StudyplanPackage#getSemester_Courses()
 	 * @model containment="true"
 	 * @generated
 	 */
-	CourseGroup getCourseGroup();
+	EList<Course> getCourses();
 
 	/**
-	 * Sets the value of the '{@link studyplan.Semester#getCourseGroup <em>Course Group</em>}' containment reference.
+	 * Returns the value of the '<em><b>Semester Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link studyplan.SemesterType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Course Group</em>' containment reference.
-	 * @see #getCourseGroup()
+	 * @return the value of the '<em>Semester Type</em>' attribute.
+	 * @see studyplan.SemesterType
+	 * @see #setSemesterType(SemesterType)
+	 * @see studyplan.StudyplanPackage#getSemester_SemesterType()
+	 * @model
 	 * @generated
 	 */
-	void setCourseGroup(CourseGroup value);
+	SemesterType getSemesterType();
+
+	/**
+	 * Sets the value of the '{@link studyplan.Semester#getSemesterType <em>Semester Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Semester Type</em>' attribute.
+	 * @see studyplan.SemesterType
+	 * @see #getSemesterType()
+	 * @generated
+	 */
+	void setSemesterType(SemesterType value);
 
 } // Semester

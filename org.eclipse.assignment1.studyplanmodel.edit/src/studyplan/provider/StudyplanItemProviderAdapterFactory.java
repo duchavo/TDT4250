@@ -72,6 +72,29 @@ public class StudyplanItemProviderAdapterFactory extends StudyplanAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link studyplan.StudyPlan} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StudyPlanItemProvider studyPlanItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link studyplan.StudyPlan}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStudyPlanAdapter() {
+		if (studyPlanItemProvider == null) {
+			studyPlanItemProvider = new StudyPlanItemProvider(this);
+		}
+
+		return studyPlanItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link studyplan.Semester} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -291,6 +314,7 @@ public class StudyplanItemProviderAdapterFactory extends StudyplanAdapterFactory
 	 */
 	@Override
 	public void dispose() {
+		if (studyPlanItemProvider != null) studyPlanItemProvider.dispose();
 		if (semesterItemProvider != null) semesterItemProvider.dispose();
 		if (courseItemProvider != null) courseItemProvider.dispose();
 		if (specializationItemProvider != null) specializationItemProvider.dispose();
