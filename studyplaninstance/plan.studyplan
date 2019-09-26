@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.assignment1.studyplan:StudyPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.assignment1.studyplan="http://org/eclipse/assignment1/studyplan">
+  <program>
+    <specialization>
+      <semesters>
+        <courses/>
+        <courses/>
+        <courses/>
+        <courses/>
+      </semesters>
+    </specialization>
+  </program>
+  <semester>
+    <courses/>
+    <courses/>
+    <courses/>
+    <courses/>
+  </semester>
+</org.eclipse.assignment1.studyplan:StudyPlan>
