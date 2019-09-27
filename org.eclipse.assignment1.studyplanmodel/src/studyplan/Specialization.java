@@ -73,22 +73,22 @@ public interface Specialization extends EObject {
 	EList<Specialization> getSpecialization();
 
 	/**
-	 * Returns the value of the '<em><b>Course Group</b></em>' reference.
+	 * Returns the value of the '<em><b>Course Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Course Group</em>' reference.
+	 * @return the value of the '<em>Course Group</em>' containment reference.
 	 * @see #setCourseGroup(CourseGroup)
 	 * @see studyplan.StudyplanPackage#getSpecialization_CourseGroup()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	CourseGroup getCourseGroup();
 
 	/**
-	 * Sets the value of the '{@link studyplan.Specialization#getCourseGroup <em>Course Group</em>}' reference.
+	 * Sets the value of the '{@link studyplan.Specialization#getCourseGroup <em>Course Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Course Group</em>' reference.
+	 * @param value the new value of the '<em>Course Group</em>' containment reference.
 	 * @see #getCourseGroup()
 	 * @generated
 	 */

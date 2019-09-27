@@ -35,7 +35,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute studyplan.ecore#//Specialization/specName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference studyplan.ecore#//Specialization/semesters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference studyplan.ecore#//Specialization/specialization"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference studyplan.ecore#//Specialization/courseGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference studyplan.ecore#//Specialization/courseGroup"/>
     </genClasses>
     <genClasses ecoreClass="studyplan.ecore#//FieldOfStudy">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute studyplan.ecore#//FieldOfStudy/fieldName"/>

@@ -81,7 +81,7 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	protected EList<Specialization> specialization;
 
 	/**
-	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' reference.
+	 * The cached value of the '{@link #getCourseGroup() <em>Course Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCourseGroup()
@@ -165,14 +165,6 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public CourseGroup getCourseGroup() {
-		if (courseGroup != null && courseGroup.eIsProxy()) {
-			InternalEObject oldCourseGroup = (InternalEObject)courseGroup;
-			courseGroup = (CourseGroup)eResolveProxy(oldCourseGroup);
-			if (courseGroup != oldCourseGroup) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StudyplanPackage.SPECIALIZATION__COURSE_GROUP, oldCourseGroup, courseGroup));
-			}
-		}
 		return courseGroup;
 	}
 
@@ -181,8 +173,14 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CourseGroup basicGetCourseGroup() {
-		return courseGroup;
+	public NotificationChain basicSetCourseGroup(CourseGroup newCourseGroup, NotificationChain msgs) {
+		CourseGroup oldCourseGroup = courseGroup;
+		courseGroup = newCourseGroup;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StudyplanPackage.SPECIALIZATION__COURSE_GROUP, oldCourseGroup, newCourseGroup);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -192,10 +190,17 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public void setCourseGroup(CourseGroup newCourseGroup) {
-		CourseGroup oldCourseGroup = courseGroup;
-		courseGroup = newCourseGroup;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SPECIALIZATION__COURSE_GROUP, oldCourseGroup, courseGroup));
+		if (newCourseGroup != courseGroup) {
+			NotificationChain msgs = null;
+			if (courseGroup != null)
+				msgs = ((InternalEObject)courseGroup).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StudyplanPackage.SPECIALIZATION__COURSE_GROUP, null, msgs);
+			if (newCourseGroup != null)
+				msgs = ((InternalEObject)newCourseGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StudyplanPackage.SPECIALIZATION__COURSE_GROUP, null, msgs);
+			msgs = basicSetCourseGroup(newCourseGroup, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StudyplanPackage.SPECIALIZATION__COURSE_GROUP, newCourseGroup, newCourseGroup));
 	}
 
 	/**
@@ -210,6 +215,8 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 				return ((InternalEList<?>)getSemesters()).basicRemove(otherEnd, msgs);
 			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
 				return ((InternalEList<?>)getSpecialization()).basicRemove(otherEnd, msgs);
+			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
+				return basicSetCourseGroup(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -229,8 +236,7 @@ public class SpecializationImpl extends MinimalEObjectImpl.Container implements 
 			case StudyplanPackage.SPECIALIZATION__SPECIALIZATION:
 				return getSpecialization();
 			case StudyplanPackage.SPECIALIZATION__COURSE_GROUP:
-				if (resolve) return getCourseGroup();
-				return basicGetCourseGroup();
+				return getCourseGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

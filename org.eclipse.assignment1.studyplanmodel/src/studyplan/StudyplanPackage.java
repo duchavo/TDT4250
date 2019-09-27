@@ -279,7 +279,7 @@ public interface StudyplanPackage extends EPackage {
 	int SPECIALIZATION__SPECIALIZATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Course Group</b></em>' reference.
+	 * The feature id for the '<em><b>Course Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -641,10 +641,10 @@ public interface StudyplanPackage extends EPackage {
 	EReference getSpecialization_Specialization();
 
 	/**
-	 * Returns the meta object for the reference '{@link studyplan.Specialization#getCourseGroup <em>Course Group</em>}'.
+	 * Returns the meta object for the containment reference '{@link studyplan.Specialization#getCourseGroup <em>Course Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Course Group</em>'.
+	 * @return the meta object for the containment reference '<em>Course Group</em>'.
 	 * @see studyplan.Specialization#getCourseGroup()
 	 * @see #getSpecialization()
 	 * @generated
@@ -944,7 +944,7 @@ public interface StudyplanPackage extends EPackage {
 		EReference SPECIALIZATION__SPECIALIZATION = eINSTANCE.getSpecialization_Specialization();
 
 		/**
-		 * The meta object literal for the '<em><b>Course Group</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Course Group</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
