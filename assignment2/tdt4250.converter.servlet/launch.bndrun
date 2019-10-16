@@ -1,0 +1,18 @@
+-runfw: org.eclipse.osgi;version=3.13
+-runee: JavaSE-1.8
+-runprovidedcapabilities: ${native_capability}
+
+-resolve.effective: active
+
+-runproperties: \
+	org.osgi.service.http.port=8080,\
+	osgi.console=,\
+	osgi.console.enable.builtin=false
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=tdt4250.converter.servlet)',\
+	bnd.identity;version='latest';id='tdt4250.converter.gogo',\
+	bnd.identity;id='org.apache.felix.configadmin',\
+	bnd.identity;id='org.osgi.service.cm'
