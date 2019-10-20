@@ -6,7 +6,8 @@ The root class contains all the other EClasses
 ```
 
 ## StudyYear
-Class containing study year and a semester reference, course reference, specialization reference, and a courseGroup reference.
+Class containing study year and a semester reference, course reference, 
+specialization reference, and a courseGroup reference.
 
 ```
 
