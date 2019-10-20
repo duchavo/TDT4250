@@ -1,0 +1,20 @@
+[comment encoding = UTF-8 /]
+[module studyPlan('http://org/eclipse/assignment1/studyplan', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+
+[template public plan(studyPlan : StudyPlan)]
+	[comment @main /]
+	[file (studyPlan.planName.concat('.html'), false, 'UTF-8')]
+		<html>
+			<head>
+			
+			</head>
+			<body>
+				<script>
+				
+				</script>
+			</body>
+		</html>
+	[/file]
+
+[/template]

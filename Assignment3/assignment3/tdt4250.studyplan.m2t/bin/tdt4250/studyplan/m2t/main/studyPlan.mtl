@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module studyPlan('http://org/eclipse/assignment1/studyplan', 'http://www.eclipse.org/emf/2002/Ecore')/]
+
+
+[template public studyPlanM2T(studyPlan : StudyPlan)]
+[comment @main/]
+[file (studyPlan.planName.concat('.html'), false, 'UTF-8')]
+	<title>"Study name: " [studyPlan.planName/]</title>
+[/file]
+[/template]
+
+[template public generate(studyYearNr: StudyYear)]
+	<h1>"Study year: " [studyYearNr.studyYear/]</h1>
+
+[/template]
+
+[template public generate(specialization: Specialization)]
+	<h2>"Specialization name: " [specialization.specName/]</h2>
+[/template]
+
+[template public generate(semester: Semester)]
+	<h2>"Semester nr: " [semester.semesterNr/]</h2>
+	<h2>"Semester type: " [semester.semesterType/]</h2>
+[/template]
+
+[template public generate(courseGroup: CourseGroup)]
+	<h2>"Course type: " [courseGroup.courseStatusType/]</h2>
+[/template]
+
+[template public generate(course: Course)]
+	<h2>"Course name: " [course.courseName/]</h2>
+	<h2>"Course code: " [course.courseCode/]</h2>
+	<h2>"Credit: " [course.credit/]</h2>
+[/template]
+
+

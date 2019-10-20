@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.assignment1.studyplan:StudyPlan xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.assignment1.studyplan="http://org/eclipse/assignment1/studyplan" planName="Computer Science - Masters (5 years)">
+  <specialization specName="Algoritmer og datamaskiner">
+    <specialization specName="Algoritmer og HPC"/>
+    <specialization specName="Datamaskiner og systemprogramvare"/>
+    <specialization specName="Visuell databehandling"/>
+  </specialization>
+  <specialization specName="Programvaresystemer">
+    <specialization specName="Programvareutvikling"/>
+    <specialization specName="Digital virksomhetsutvikling"/>
+    <specialization specName="Interaksjonsdesign og spillteknologi"/>
+  </specialization>
+  <specialization specName="Databaser og sok"/>
+  <specialization specName="Kunstig intelligens"/>
+  <yearOfStudy studyYear="1">
+    <semester semesterNr="1" semesterType="FALL">
+      <courseGroup>
+        <course courseName="Exphil" courseCode="EXPH0004" credit="7.5"/>
+        <course courseName="HMS-kurs" courseCode="HMS0002"/>
+        <course courseName="Python" courseCode="TDT4110" credit="7.5"/>
+        <course courseName="Matematikk 1" courseCode="TMA4100" credit="7.5"/>
+        <course courseName="Diskre Matematikk" courseCode="TMA4140" credit="7.5"/>
+      </courseGroup>
+    </semester>
+    <semester semesterNr="2">
+      <courseGroup>
+        <course courseName="Java" courseCode="TDT4100" credit="7.5"/>
+        <course courseName="Programmeringslab" courseCode="TDT4112" credit="7.5"/>
+        <course courseName="Krets- og digitalteknikk" courseCode="TFE4101" credit="7.5"/>
+        <course courseName="Matematikk 3" courseCode="TMA4115" credit="7.5"/>
+      </courseGroup>
+    </semester>
+  </yearOfStudy>
+  <yearOfStudy studyYear="2">
+    <semester semesterNr="3" semesterType="FALL">
+      <courseGroup>
+        <course courseName="Programmeringsprosjekt" courseCode="TDT4113" credit="7.5"/>
+        <course courseName="Algoritmer og datastrukturer" courseCode="TDT4120" credit="7.5"/>
+        <course courseName="Datamaskiner og digitalteknikk" courseCode="TDT4160" credit="7.5"/>
+        <course courseName="Statistikk" courseCode="TMA4240" credit="7.5"/>
+      </courseGroup>
+    </semester>
+    <semester semesterNr="4">
+      <courseGroup>
+        <course courseName="Programvareutvikling" courseCode="TDT4140" credit="7.5"/>
+        <course courseName="Datamodellering og databasesystemer" courseCode="TDT4145" credit="7.5"/>
+        <course courseName="Menneske og maskin-interaksjon" courseCode="TDT4180" credit="7.5"/>
+        <course courseName="Kommunikasjon - Tjenester og nett" courseCode="TTM4100" credit="7.5"/>
+      </courseGroup>
+    </semester>
+  </yearOfStudy>
+  <yearOfStudy studyYear="3">
+    <specialization specName="Software Systems">
+      <semesters semesterNr="5" semesterType="FALL">
+        <courseGroup>
+          <course courseName="Introduksjon til kunstig intelligens" courseCode="TDT4136" credit="7.5"/>
+          <course courseName="Informasjonssystemer" courseCode="TDT4175" credit="7.5"/>
+          <course courseName="Matematikk 4D" courseCode="TMA4135" credit="7.5"/>
+        </courseGroup>
+        <courseGroup courseStatusType="ELECTIVE">
+          <course courseName="Webutvikling" courseCode="IT2810" credit="7.5"/>
+        </courseGroup>
+      </semesters>
+      <semesters semesterNr="6">
+        <courseGroup>
+          <course courseName="Operativsystemer" courseCode="TDT4186" credit="7.5"/>
+          <course courseName="Programvarearkitektur" courseCode="TDT4240" credit="7.5"/>
+          <course courseName="Fysikk" courseCode="TFY4125" credit="7.5"/>
+          <course courseName="Teknologiledelse" courseCode="TIØ4258" credit="7.5"/>
+        </courseGroup>
+      </semesters>
+    </specialization>
+  </yearOfStudy>
+  <yearOfStudy studyYear="4">
+    <specialization specName="Software Engineering">
+      <semesters semesterNr="7" semesterType="FALL">
+        <courseGroup>
+          <course courseName="Avansert programvaredesign" courseCode="TDT4250" credit="7.5"/>
+          <course courseName="Kundestyrt prosjekt" courseCode="TDT4290" credit="15.0"/>
+        </courseGroup>
+        <courseGroup courseStatusType="ELECTIVE">
+          <course courseName="Finans for teknisk-naturvitenskapelig studenter" courseCode="TIØ4146" credit="7.5"/>
+        </courseGroup>
+      </semesters>
+      <semesters semesterNr="8">
+        <courseGroup>
+          <course courseName="Avansert programvareutvikling" courseCode="TDT4242" credit="7.5"/>
+        </courseGroup>
+        <courseGroup courseStatusType="ELECTIVE">
+          <course courseName="Programvaresikkerhet" courseCode="TDT4237" credit="7.5"/>
+          <course courseName="Elektriske motordrifter" courseCode="TET4120" credit="7.5"/>
+          <course courseName="Eksperter i team - forbruk - design - livsstil" courseCode="EIT3006" credit="7.5"/>
+        </courseGroup>
+      </semesters>
+    </specialization>
+  </yearOfStudy>
+  <yearOfStudy studyYear="5">
+    <semester semesterNr="9" semesterType="FALL">
+      <courseGroup>
+        <course courseName="Datateknologi, fordypningsprosjekt" courseCode="TDT4501" credit="15.0"/>
+        <course courseName="Datateknologi, fordypningsemne" courseCode="TDT4506" credit="7.5"/>
+      </courseGroup>
+      <courseGroup courseStatusType="ELECTIVE">
+        <course courseName="Digital økonomi" courseCode="TTM4165" credit="7.5"/>
+      </courseGroup>
+    </semester>
+    <semester semesterNr="10">
+      <courseGroup>
+        <course courseName="Datateknologi, masteroppgave" courseCode="TDT4900" credit="30.0"/>
+      </courseGroup>
+    </semester>
+  </yearOfStudy>
+</org.eclipse.assignment1.studyplan:StudyPlan>
