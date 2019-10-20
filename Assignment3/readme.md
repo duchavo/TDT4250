@@ -1,3 +1,5 @@
+IGNORE tdt4250.studyplan folder
+
 # Classes
 
 ## StudyPlan
