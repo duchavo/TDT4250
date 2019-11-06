@@ -2,7 +2,6 @@
 
 ```
 Unit converter using OSGi
-```
 
 ## Structure
 ```
@@ -11,7 +10,6 @@ Unit converter using OSGi
 **tdt4250.converter.rest** - Should be used to convert values
 **tdt4250.converter.servlet** - Servlet for web service 
 
-```
 ## Setup
 ```
 To run the project, launch the launch.bndrun in the tdt4250.convert.servlet project. I haven't actually added any converter methods, but something is working at least! 
